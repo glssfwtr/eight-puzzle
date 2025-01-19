@@ -11,7 +11,7 @@ CXXFLAGS = -Ofast -ffast-math -flto -fomit-frame-pointer\
 							-Wswitch-default -Wswitch-enum -Wundef -Wunreachable-code\
 							-Wunused -Wuseless-cast -Wvla\
 
-SOURCES = $(wildcard *.cpp *.hpp)
+SOURCES = $(wildcard *.cpp)
 
 OBJECTS = $(SOURCES:.cpp=.o)
 
@@ -27,4 +27,4 @@ $(EXECUTABLE): $(OBJECTS)
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	@rm -f $(OBJECTS) $(DEPS) $(EXECUTABLE)
+	@rm -f *.o $(EXECUTABLE)

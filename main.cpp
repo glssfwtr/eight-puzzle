@@ -29,5 +29,7 @@ int main()
   std::cout << CheckGoalState(problem_state) << std::endl;
   std::cout << CheckGoalState(hard_state) << std::endl;
 
+  //
+
   return 0;
 }

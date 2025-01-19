@@ -2,13 +2,13 @@
 
 #include "print.hpp"
 
-void PrintPuzzle(const puzzle_state& state)
+void Print_Puzzle(const puzzle_state& state)
 {
-  for ( int i = 0; i < 9; ++i )
+  for ( std::size_t i = 0; i < state.size(); ++i )
   {
     if ( i % 3 == 0 )
     {
-      std::cout << "\n";
+      std::cout << std::endl;
     }
 
     std::cout << state[i] << " ";

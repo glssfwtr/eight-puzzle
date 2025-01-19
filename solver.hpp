@@ -2,11 +2,16 @@
 #define SOLVER_HPP
 
 #include <iostream>
-#include <array>
+#include <queue>
+#include <vector>
 
-using puzzle_state = std::array<int, 9>;
+#include "custom_dict.hpp"
 
-bool CheckState(const puzzle_state& state);
+using puzzle_state = std::vector<int>;
+
+bool CheckRepeated(const puzzle_state& state); // returns false if
+bool InsertState(const puzzle_state& state); // returns false if already exists as insert
+bool CheckGoalState(const puzzle_state& state);
 puzzle_state UniformCostSearch(puzzle_state start_state);
 
 #endif // SOLVER_HPP

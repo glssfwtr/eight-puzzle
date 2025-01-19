@@ -1,9 +1,7 @@
 #ifndef PRINT_HPP
 #define PRINT_HPP
 
-#include <array>
-
-using puzzle_state = std::array<int, 9>;
+#include "solver.hpp"
 
 void Print_Puzzle(const puzzle_state& state);
 

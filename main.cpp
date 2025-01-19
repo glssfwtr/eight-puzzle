@@ -2,6 +2,7 @@
 #include <iostream>
 #include <queue>
 
+#include "solver.cpp"
 #include "print.hpp"
 
 int main()
@@ -13,10 +14,6 @@ int main()
   puzzle_state state = {1, 2, 3, 4, 5, 6, 7, 8, 0};
 
   Print_Puzzle(state);
-
-
-
-
 
   return 0;
 }

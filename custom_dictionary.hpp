@@ -1,5 +1,5 @@
-#ifndef CUSTOM_DICT_HPP
-#define CUSTOM_DICT_HPP
+#ifndef CUSTOM_DICTIONARY_HPP
+#define CUSTOM_DICTIONARY_HPP
 
 #include <unordered_set>
 #include <vector>
@@ -30,5 +30,4 @@ struct PuzzleStateEqual
   }
 };
 
-
-#endif // CUSTOM_DICT_HPP
+#endif // CUSTOM_DICTIONARY_HPP

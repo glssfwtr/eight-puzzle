@@ -5,7 +5,7 @@
 #include <queue>
 #include <vector>
 
-#include "custom_dict.hpp"
+#include "custom_dictionary.hpp"
 
 using puzzle_state = std::vector<int>;
 

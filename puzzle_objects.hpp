@@ -14,7 +14,7 @@
 // rows specify how many std::arrays in each row, columns specify how many elements in each std::array row of the 2D matrix
 constexpr int rows = 3; // std::array
 constexpr int columns = 3; // int in each std::array
-using puzzle_state = std::array<std::array<int, columns>, rows>;
+using puzzle_state = std::array<std::array<int, columns>, rows>; // remember off by 1 indexing, 0 is the first, 2 is the last
 
 constexpr puzzle_state goal_state =
 {
@@ -57,6 +57,10 @@ struct PuzzleStateEqual
 
 using states_dictionary = std::unordered_set<puzzle_state, PuzzleStateHash, PuzzleStateEqual>;
 
-extern states_dictionary visited_states;
+namespace puzzle_container
+{
+  static states_dictionary visited_states;
+  static std::priority_queue<int, std::vector<int>, std::greater<int>> min_heap;
+}
 
 #endif // PUZZLE_OBJECTS_HPP

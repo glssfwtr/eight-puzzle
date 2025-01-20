@@ -6,9 +6,9 @@
 
 int main()
 {
-  InitializerTests();
-  NodePointerTests();
-  TestTimer();
+  // InitializerTests();
+  NodePointerReferenceSetTest();
+  // TestTimer();
 
 
 

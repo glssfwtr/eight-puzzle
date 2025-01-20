@@ -1,6 +1,6 @@
 #include "print.hpp"
 
-void PrintPuzzle(const puzzle_state& state)
+void PrintPuzzleState(const puzzle_state& state)
 {
   for ( const auto& row : state ) // each row of the state
   {

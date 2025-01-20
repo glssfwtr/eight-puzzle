@@ -6,7 +6,7 @@
 #include "solver.hpp"
 
 void InitializerTests();
-void NodePointerTests();
+void NodePointerReferenceSetTest();
 void TestTimer();
 
 constexpr puzzle_state correct_state =
@@ -18,12 +18,21 @@ constexpr puzzle_state correct_state =
   }
 };
 
-constexpr puzzle_state problem_state =
+constexpr puzzle_state problem_state1 =
 {
   {
     {2, 1, 3},
     {4, 5, 7},
     {6, 0, 8}
+  }
+};
+
+constexpr puzzle_state problem_state2 =
+{
+  {
+    {5, 2, 7},
+    {4, 1, 6},
+    {0, 8, 3}
   }
 };
 

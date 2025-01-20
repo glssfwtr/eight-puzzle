@@ -8,9 +8,10 @@ struct Node
   Node* parent;
   int heuristic_value;
   int node_depth; // depth of the node in the search space tree
-  puzzle_state state;
+  puzzle_state current_puzzle_state;
 
   Node();
+  Node(puzzle_state& state);
   ~Node();
 };
 

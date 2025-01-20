@@ -1,8 +1,5 @@
 #include "solver.hpp"
 
-std::priority_queue<int, std::vector<int>, std::greater<int>> min_heap;
-states_dictionary visited_states;
-
 // possible redundant as InsertState already checks for this by default on insert
 bool CheckRepeated(const puzzle_state& state)
 {

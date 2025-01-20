@@ -31,6 +31,27 @@ void InitializerTests()
   // PrintPuzzle(some_state);
 
   PrintComparison(problem_state, problem_state);
+  PrintComparison(problem_state, goal_state);
+  PrintComparison(hard_puzzle_state, goal_state);
+  PrintComparison(correct_state, goal_state);
+
+  return;
+}
+
+void NodePointerTests()
+{
+  Node* node = new Node();
+
+  PrintPuzzle(node->state);
+
+  delete node;
+
+  return;
+}
+
+void TestTimer()
+{
+  ChronoTimer timer;
 
   return;
 }

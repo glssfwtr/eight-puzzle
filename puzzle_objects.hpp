@@ -1,14 +1,33 @@
-#ifndef CUSTOM_DICTIONARY_HPP
-#define CUSTOM_DICTIONARY_HPP
+#ifndef PUZZLE_OBJECTS_HPP
+#define PUZZLE_OBJECTS_HPP
 
 #include <array>
+#include <queue>
 #include <unordered_set>
+
+#include <array>
+
+/*
+          PUZZLE STATE REPRESENTATION
+*/
 
 // rows specify how many std::arrays in each row, columns specify how many elements in each std::array row of the 2D matrix
 constexpr int rows = 3; // std::array
 constexpr int columns = 3; // int in each std::array
 using puzzle_state = std::array<std::array<int, columns>, rows>;
 
+constexpr puzzle_state goal_state =
+{
+  {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 0}
+  }
+};
+
+/*
+          CSTOM HASH FUNCTION FOR REPEATED PUZZLE STATE DICTIONARY
+*/
 struct PuzzleStateHash // hash function obj
 {
   std::size_t operator()(const puzzle_state& state) const
@@ -38,5 +57,6 @@ struct PuzzleStateEqual
 
 using states_dictionary = std::unordered_set<puzzle_state, PuzzleStateHash, PuzzleStateEqual>;
 
+extern states_dictionary visited_states;
 
-#endif // CUSTOM_DICTIONARY_HPP
+#endif // PUZZLE_OBJECTS_HPP

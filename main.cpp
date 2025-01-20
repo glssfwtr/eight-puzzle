@@ -7,6 +7,11 @@
 int main()
 {
   InitializerTests();
+  NodePointerTests();
+  TestTimer();
+
+
+
 
   return 0;
 }

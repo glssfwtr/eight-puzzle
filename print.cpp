@@ -20,23 +20,30 @@ void PrintPuzzle(const puzzle_state& state)
 // i am so bad at print formatting wtf
 void PrintComparison(const puzzle_state& lhs, const puzzle_state& rhs)
 {
-  for (size_t i = 0; i < lhs.size(); ++i)
+  for (std::size_t i = 0; i < lhs.size(); ++i)
   {
-    for (size_t j = 0; j < lhs[i].size(); ++j)
+    for (std::size_t j = 0; j < lhs[i].size(); ++j)
     {
       std::cout << lhs[i][j] << " ";
     }
 
     if (i == lhs.size() / 2)
     {
-      std::cout << "== ";
+      if (lhs == rhs)
+      {
+        std::cout << "== ";
+      }
+      else
+      {
+        std::cout << "!= ";
+      }
     }
     else
     {
       std::cout << "   ";
     }
 
-    for (size_t j = 0; j < rhs[i].size(); ++j)
+    for (std::size_t j = 0; j < rhs[i].size(); ++j)
     {
       std::cout << rhs[i][j] << " ";
     }
@@ -45,4 +52,6 @@ void PrintComparison(const puzzle_state& lhs, const puzzle_state& rhs)
   }
 
   std::cout << std::endl;
+
+  return;
 }

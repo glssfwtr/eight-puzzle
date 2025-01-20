@@ -1,7 +1,13 @@
 #ifndef TEST_HPP
 #define TEST_HPP
 
+#include "chrono_benchmark.hpp"
 #include "print.hpp"
+#include "solver.hpp"
+
+void InitializerTests();
+void NodePointerTests();
+void TestTimer();
 
 constexpr puzzle_state correct_state =
 {
@@ -38,7 +44,5 @@ constexpr puzzle_state some_state =
     {6, 0, 7}
   }
 };
-
-void InitializerTests();
 
 #endif // TEST_HPP

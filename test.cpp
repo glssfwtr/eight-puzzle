@@ -40,6 +40,7 @@ void InitializerTests()
 
 void NodePointerReferenceSetTest()
 {
+  ChronoTimer timer;
   Node* node1 = new Node();
 
   puzzle_state random_state =

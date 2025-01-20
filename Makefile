@@ -11,9 +11,12 @@ CXXFLAGS = -Ofast -ffast-math -flto -fomit-frame-pointer\
 							-Wswitch-default -Wswitch-enum -Wundef -Wunreachable-code\
 							-Wunused -Wuseless-cast -Wvla\
 
+INCLUDES = -Iextern
+
 SOURCES = $(wildcard *.cpp)
 
-OBJECTS = $(SOURCES:.cpp=.o)
+# pattern substitution on all cpp files with .o object output name scheme
+OBJECTS = $(patsubst %.cpp, build/%.o, $(SOURCES))
 
 EXECUTABLE = a.out
 
@@ -21,10 +24,13 @@ all: clean $(EXECUTABLE)
 			@./$(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS)
-	@$(CXX) $(CXXFLAGS) -o $(EXECUTABLE) $(OBJECTS)
+	@$(CXX) $(CXXFLAGS) $(INCLUDES) -o $(EXECUTABLE) $(OBJECTS)
 
-%.o: %.cpp
-	@$(CXX) $(CXXFLAGS) -c $< -o $@
+build/%.o: %.cpp
+	@mkdir -p build
+	@$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
+
+# don't -rf the build directory, just the files in it
 clean:
-	@rm -f *.o $(EXECUTABLE)
+	@rm -f build/*.o $(EXECUTABLE)

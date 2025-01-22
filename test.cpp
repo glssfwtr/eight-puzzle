@@ -81,6 +81,49 @@ void NodePointerReferenceSetTest()
   return;
 }
 
+void PriorityQeueueTest()
+{
+  puzzle_state problem_state = problem_state1; // load to avoid constexpr issues
+
+  Node* node0 = new Node(problem_state);
+
+  PrintPuzzleState(node0->current_puzzle_state);
+
+  std::vector<Node*> successor_nodes = generate_successors(node0);
+
+  puzzle_container::min_heap.push(node0);
+  for ( Node* node : successor_nodes )
+  {
+    puzzle_container::min_heap.push(node);
+  }
+
+  successor_nodes = generate_successors(successor_nodes.back());
+
+  for ( Node* node : successor_nodes )
+  {
+    puzzle_container::min_heap.push(node);
+  }
+
+  Node* node1 = new Node(nullptr, -999, problem_state);
+
+  puzzle_container::min_heap.push(node1);
+
+  std::cout << "\n\n\n\n";
+
+  while ( !puzzle_container::min_heap.empty() )
+  {
+    Node* node = puzzle_container::min_heap.top();
+    puzzle_container::min_heap.pop();
+
+    std::cout << "Node depth: " << node->node_depth << std::endl;
+    PrintPuzzleState(node->current_puzzle_state);
+  }
+
+  // PrintComparison(node0->current_puzzle_state, node1->current_puzzle_state);
+
+}
+
+
 void TestTimer()
 {
   ChronoTimer timer;

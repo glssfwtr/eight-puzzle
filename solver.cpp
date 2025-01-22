@@ -18,7 +18,11 @@ bool CheckGoalState(const puzzle_state& state)
 
 puzzle_state UniformCostSearch(puzzle_state& start_state)
 {
-  // todo
 
+
+
+
+
+  // CHANGE THIS NODE WHEN FINISHED
   return start_state;
 }

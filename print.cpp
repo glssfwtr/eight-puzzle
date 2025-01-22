@@ -4,7 +4,7 @@ void PrintPuzzleState(const puzzle_state& state)
 {
   for ( const auto& row : state ) // each row of the state
   {
-    for ( const int element : row ) // each element of each row
+    for ( const int  element : row ) // each element of each row
     {
       std::cout << element << " ";
     }
@@ -17,17 +17,17 @@ void PrintPuzzleState(const puzzle_state& state)
   return;
 }
 
-// i am so bad at print formatting wtf
+// horrendous formatting
 void PrintComparison(const puzzle_state& lhs, const puzzle_state& rhs)
 {
-  for (std::size_t i = 0; i < lhs.size(); ++i)
+  for ( std::size_t i = 0; i < lhs.size(); ++i )
   {
-    for (std::size_t j = 0; j < lhs[i].size(); ++j)
+    for ( std::size_t  j = 0; j < lhs[i].size(); ++j )
     {
       std::cout << lhs[i][j] << " ";
     }
 
-    if (i == lhs.size() / 2)
+    if ( i == lhs.size() / 2 ) // check if printing middle row
     {
       if (lhs == rhs)
       {
@@ -43,7 +43,7 @@ void PrintComparison(const puzzle_state& lhs, const puzzle_state& rhs)
       std::cout << "   ";
     }
 
-    for (std::size_t j = 0; j < rhs[i].size(); ++j)
+    for ( std::size_t j = 0; j < rhs[i].size(); ++j )
     {
       std::cout << rhs[i][j] << " ";
     }

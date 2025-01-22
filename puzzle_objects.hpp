@@ -5,8 +5,6 @@
 #include <queue>
 #include <unordered_set>
 
-#include <array>
-
 /*
           PUZZLE STATE REPRESENTATION
 */
@@ -16,7 +14,7 @@ constexpr int rows = 3; // std::array
 constexpr int columns = 3; // int in each std::array
 using puzzle_state = std::array<std::array<int, columns>, rows>; // remember off by 1 indexing, 0 is the first, 2 is the last
 
-constexpr puzzle_state goal_state =
+const static puzzle_state goal_state =
 {
   {
     {1, 2, 3},
@@ -25,9 +23,31 @@ constexpr puzzle_state goal_state =
   }
 };
 
-/*
-          CSTOM HASH FUNCTION FOR REPEATED PUZZLE STATE DICTIONARY
-*/
+static puzzle_state bad_state =
+{
+  {
+    {-1, -1, -1},
+    {-1, -1, -1},
+    {-1, -1, -1}
+  }
+};
+
+struct Node
+{
+  Node* parent;
+  int heuristic_value = 0;
+  int node_depth = 0; // depth of the node in the search space tree
+  // int reach_cost; // cost to reach this node from the start node
+  puzzle_state current_puzzle_state;
+
+
+  Node(Node* p = nullptr, int d = 0, puzzle_state& state = bad_state) : parent(p), node_depth(d), current_puzzle_state(state) {}
+  Node(puzzle_state& state) : current_puzzle_state(state) {}
+  ~Node() = default;
+};
+
+
+//CSTOM HASH FUNCTION FOR REPEATED PUZZLE STATE DICTIONARY
 struct PuzzleStateHash // hash function obj
 {
   std::size_t operator()(const puzzle_state& state) const
@@ -46,6 +66,7 @@ struct PuzzleStateHash // hash function obj
   }
 };
 
+
 // custom equality comparator for puzzle_state
 struct PuzzleStateEqual
 {
@@ -55,12 +76,25 @@ struct PuzzleStateEqual
   }
 };
 
+
+// priority queue comparator
+struct NodeDepthComparator
+{
+  bool operator()(const Node* lhs, const Node* rhs) const
+  {
+    return lhs->node_depth > rhs->node_depth; // Min-heap (smaller cost has higher priority)
+  }
+};
+
 using states_dictionary = std::unordered_set<puzzle_state, PuzzleStateHash, PuzzleStateEqual>;
 
 namespace puzzle_container
 {
   static states_dictionary visited_states;
-  static std::priority_queue<int, std::vector<int>, std::greater<int>> min_heap;
+  static std::priority_queue<Node*, std::vector<Node*>, NodeDepthComparator> min_heap;
 }
+
+std::vector<Node*> generate_successors(Node* current_node);
+
 
 #endif // PUZZLE_OBJECTS_HPP

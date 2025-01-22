@@ -1,7 +1,7 @@
 #ifndef SOLVER_HPP
 #define SOLVER_HPP
 
-#include "node.hpp"
+#include "puzzle_objects.hpp"
 
 bool CheckRepeated(const puzzle_state& state); // returns false if
 bool InsertState(const puzzle_state& state); // returns false if already exists as insert

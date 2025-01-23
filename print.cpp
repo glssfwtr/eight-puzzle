@@ -2,17 +2,17 @@
 
 void PrintPuzzleState(const puzzle_state& state)
 {
-  for ( const auto& row : state ) // each row of the state
+  for ( const puzzle_state::value_type& row : state ) // each row of the state
   {
     for ( const int  element : row ) // each element of each row
     {
       std::cout << element << " ";
     }
 
-    std::cout << std::endl;
+    std::cout << "\n";
   }
 
-  std::cout << std::endl;
+  std::cout << "\n";
 
   return;
 }
@@ -48,10 +48,10 @@ void PrintComparison(const puzzle_state& lhs, const puzzle_state& rhs)
       std::cout << rhs[i][j] << " ";
     }
 
-    std::cout << std::endl;
+    std::cout << "\n";
   }
 
-  std::cout << std::endl;
+  std::cout << "\n";
 
   return;
 }

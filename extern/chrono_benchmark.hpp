@@ -39,7 +39,7 @@ class ChronoTimer
     // convert micro to milli                       cast
     double total_duration_milliseconds{static_cast<double>(total_duration_microseconds) * 0.001};
 
-    std::cout << total_duration_milliseconds << "millis" << std::endl;
+    std::cout << total_duration_milliseconds << "millis\n";
   }
 
   private:

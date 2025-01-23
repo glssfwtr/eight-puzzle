@@ -3,7 +3,7 @@
 // possible redundant as InsertState already checks for this by default on insert
 bool CheckRepeated(const puzzle_state& state)
 {
-  return puzzle_container::visited_states.find(state) != puzzle_container::visited_states.end();
+  return ( puzzle_container::visited_states.find(state) != puzzle_container::visited_states.end() );
 }
 
 bool InsertState(const puzzle_state& state)

@@ -2,28 +2,28 @@
 
 void InitializerTests()
 {
-  std::cout << "first " << InsertState(problem_state1) << std::endl;
-  std::cout << "second " << InsertState(problem_state1) << std::endl;
+  std::cout << "first " << InsertState(problem_state1) << "\n";
+  std::cout << "second " << InsertState(problem_state1) << "\n";
 
-  std::cout << "first " << InsertState(correct_state) << std::endl;
-  std::cout << "second " << InsertState(correct_state) << std::endl;
+  std::cout << "first " << InsertState(correct_state) << "\n";
+  std::cout << "second " << InsertState(correct_state) << "\n";
 
-  std::cout << "first " << InsertState(hard_puzzle_state) << std::endl;
-  std::cout << "second " << InsertState(hard_puzzle_state) << std::endl;
+  std::cout << "first " << InsertState(problem_state3) << "\n";
+  std::cout << "second " << InsertState(problem_state3) << "\n";
 
-  std::cout << "first " << InsertState(some_state) << std::endl;
-  std::cout << "second " << InsertState(some_state) << std::endl;
+  std::cout << "first " << InsertState(problem_state4) << "\n";
+  std::cout << "second " << InsertState(problem_state4) << "\n";
 
-  std::cout << "third " << InsertState(correct_state) << std::endl;
-  std::cout << "third " << InsertState(problem_state1) << std::endl;
-  std::cout << "third " << InsertState(hard_puzzle_state) << std::endl;
-  std::cout << "third " << InsertState(some_state) << std::endl;
+  std::cout << "third " << InsertState(correct_state) << "\n";
+  std::cout << "third " << InsertState(problem_state1) << "\n";
+  std::cout << "third " << InsertState(problem_state3) << "\n";
+  std::cout << "third " << InsertState(problem_state4) << "\n";
 
 
-  std::cout << CheckGoalState(problem_state1) << std::endl;
-  std::cout << CheckGoalState(correct_state) << std::endl;
-  std::cout << CheckGoalState(hard_puzzle_state) << std::endl;
-  std::cout << CheckGoalState(some_state) << std::endl;
+  std::cout << CheckGoalState(problem_state1) << "\n";
+  std::cout << CheckGoalState(correct_state) << "\n";
+  std::cout << CheckGoalState(problem_state3) << "\n";
+  std::cout << CheckGoalState(problem_state4) << "\n";
 
   // PrintPuzzle(correct_state);
   // PrintPuzzle(problem_state);
@@ -32,7 +32,7 @@ void InitializerTests()
 
   PrintComparison(problem_state1, problem_state1);
   PrintComparison(problem_state1, goal_state);
-  PrintComparison(hard_puzzle_state, goal_state);
+  PrintComparison(problem_state3, goal_state);
   PrintComparison(correct_state, goal_state);
 
   return;
@@ -78,6 +78,8 @@ void NodePointerReferenceSetTest()
   delete node1;
   delete node2;
 
+  std::cout << "\n======================\n";
+
   return;
 }
 
@@ -115,18 +117,82 @@ void PriorityQeueueTest()
     Node* node = puzzle_container::min_heap.top();
     puzzle_container::min_heap.pop();
 
-    std::cout << "Node depth: " << node->node_depth << std::endl;
+    std::cout << "Node depth: " << node->node_depth << "\n";
     PrintPuzzleState(node->current_puzzle_state);
   }
 
   // PrintComparison(node0->current_puzzle_state, node1->current_puzzle_state);
 
+  std::cout << "\n======================\n";
+
+
+  return;
 }
 
+void TestDictionary()
+{
+  puzzle_state loader = problem_state1;
+  Node* node0 = new Node(loader);
+  PrintPuzzleState(node0->current_puzzle_state);
+  std::cout << InsertState(node0->current_puzzle_state) << "\n";
+
+  loader = problem_state2;
+  Node* node1 = new Node(loader);
+  PrintPuzzleState(node1->current_puzzle_state);
+  std::cout << InsertState(node1->current_puzzle_state) << "\n";
+
+  loader = problem_state3;
+  Node* node2 = new Node(loader);
+  PrintPuzzleState(node2->current_puzzle_state);
+  std::cout << InsertState(node2->current_puzzle_state) << "\n";
+
+  if ( InsertState(node0->current_puzzle_state) )
+  {
+    std::cout << "node0 inserted\n";
+  }
+  else
+  {
+    std::cout << "node0 not inserted\n";
+  }
+
+  if ( InsertState(node1->current_puzzle_state) )
+  {
+    std::cout << "node1 inserted\n";
+  }
+  else
+  {
+    std::cout << "node1 not inserted\n";
+  }
+
+  if ( InsertState(node2->current_puzzle_state) )
+  {
+    std::cout << "node2 inserted\n";
+  }
+  else
+  {
+    std::cout << "node2 not inserted\n";
+  }
+
+
+  std::cout << puzzle_container::visited_states.size() << "\n";
+
+  for (states_dictionary::iterator::value_type state : puzzle_container::visited_states)
+  {
+    PrintPuzzleState(state);
+  }
+
+
+
+  std::cout << "\n======================\n";
+
+  return;
+}
 
 void TestTimer()
 {
   ChronoTimer timer;
+
+
 
   return;
 }

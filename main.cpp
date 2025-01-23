@@ -6,11 +6,10 @@
 
 int main()
 {
-  ChronoTimer timer;
-  InitializerTests();
-  NodePointerReferenceSetTest();
-  TestTimer();
-  PriorityQeueueTest();
+  // InitializerTests();
+  // NodePointerReferenceSetTest();
+  // PriorityQeueueTest();
+  TestDictionary();
 
 
 

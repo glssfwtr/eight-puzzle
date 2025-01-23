@@ -9,6 +9,7 @@ void InitializerTests();
 void NodePointerReferenceSetTest();
 void PriorityQeueueTest();
 void TestTimer();
+void TestDictionary();
 
 constexpr puzzle_state correct_state =
 {
@@ -37,7 +38,7 @@ constexpr puzzle_state problem_state2 =
   }
 };
 
-constexpr puzzle_state hard_puzzle_state =
+constexpr puzzle_state problem_state3 =
 {
   {
     {8, 7, 1},
@@ -46,7 +47,7 @@ constexpr puzzle_state hard_puzzle_state =
   }
 };
 
-constexpr puzzle_state some_state =
+constexpr puzzle_state problem_state4 =
 {
   {
     {3, 1, 2},

@@ -14,7 +14,7 @@ constexpr int rows = 3; // std::array
 constexpr int columns = 3; // int in each std::array
 using puzzle_state = std::array<std::array<int, columns>, rows>; // remember off by 1 indexing, 0 is the first, 2 is the last
 
-const static puzzle_state goal_state =
+constexpr puzzle_state goal_state =
 {
   {
     {1, 2, 3},
@@ -41,20 +41,20 @@ struct Node
   puzzle_state current_puzzle_state;
 
 
-  Node(Node* p = nullptr, int d = 0, puzzle_state& state = bad_state) : parent(p), node_depth(d), current_puzzle_state(state) {}
   Node(puzzle_state& state) : current_puzzle_state(state) {}
+  Node(Node* p = nullptr, int d = 0, puzzle_state& state = bad_state) : parent(p), node_depth(d), current_puzzle_state(state) {}
   ~Node() = default;
 };
 
 
-//CSTOM HASH FUNCTION FOR REPEATED PUZZLE STATE DICTIONARY
+// custom hash for repeated puzzle states in dictionary
 struct PuzzleStateHash // hash function obj
 {
   std::size_t operator()(const puzzle_state& state) const
   {
     std::size_t hash = 0;
 
-    for ( const auto& row : state ) // iterate through each row
+    for ( const puzzle_state::value_type& row : state ) // iterate through each row
     {
       for ( const int element : row ) // iterate through each element in the row
       {
@@ -77,7 +77,7 @@ struct PuzzleStateEqual
 };
 
 
-// priority queue comparator
+// priority queue comparator because std::priority_queue is a max heap by default
 struct NodeDepthComparator
 {
   bool operator()(const Node* lhs, const Node* rhs) const
@@ -90,8 +90,8 @@ using states_dictionary = std::unordered_set<puzzle_state, PuzzleStateHash, Puzz
 
 namespace puzzle_container
 {
-  static states_dictionary visited_states;
-  static std::priority_queue<Node*, std::vector<Node*>, NodeDepthComparator> min_heap;
+  extern states_dictionary visited_states;
+  extern std::priority_queue<Node*, std::vector<Node*>, NodeDepthComparator> min_heap;
 }
 
 std::vector<Node*> generate_successors(Node* current_node);

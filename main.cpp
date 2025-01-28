@@ -8,8 +8,10 @@ int main()
 {
   // InitializerTests();
   // NodePointerReferenceSetTest();
-  // PriorityQeueueTest();
-  TestDictionary();
+  // PriorityQueueTest();
+  // PriorityQueueSizeTest();
+  // TestDictionary();
+  TestGeneratingSuccessor();
 
 
 

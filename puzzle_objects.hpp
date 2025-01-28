@@ -4,6 +4,7 @@
 #include <array>
 #include <queue>
 #include <unordered_set>
+#include <tuple>
 
 /*
           PUZZLE STATE REPRESENTATION
@@ -13,6 +14,8 @@
 constexpr int rows = 3; // std::array
 constexpr int columns = 3; // int in each std::array
 using puzzle_state = std::array<std::array<int, columns>, rows>; // remember off by 1 indexing, 0 is the first, 2 is the last
+// no constructors implemented, so take random shit from stack mem
+
 
 constexpr puzzle_state goal_state =
 {
@@ -34,12 +37,11 @@ static puzzle_state bad_state =
 
 struct Node
 {
-  Node* parent;
-  int heuristic_value = 0;
-  int node_depth = 0; // depth of the node in the search space tree
-  // int reach_cost; // cost to reach this node from the start node
-  puzzle_state current_puzzle_state;
-
+  Node* parent = std::nullptr_t();
+  int node_depth = 0; // acts as g(n) cost to get to node, or depth per travel
+  int heuristic_value = 0; // h(n) from heuristic function
+  int f = 0; // f(n) = g(n) + h(n)
+  puzzle_state current_puzzle_state; //
 
   Node(puzzle_state& state) : current_puzzle_state(state) {}
   Node(Node* p = nullptr, int d = 0, puzzle_state& state = bad_state) : parent(p), node_depth(d), current_puzzle_state(state) {}
@@ -94,7 +96,7 @@ namespace puzzle_container
   extern std::priority_queue<Node*, std::vector<Node*>, NodeDepthComparator> min_heap;
 }
 
-std::vector<Node*> generate_successors(Node* current_node);
+std::vector<Node*> GenerateSuccessors(Node* parent_node);
 
 
 #endif // PUZZLE_OBJECTS_HPP

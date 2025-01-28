@@ -7,9 +7,11 @@
 
 void InitializerTests();
 void NodePointerReferenceSetTest();
-void PriorityQeueueTest();
-void TestTimer();
+void PriorityQueueSizeTest();
+void PriorityQueueTest();
 void TestDictionary();
+void TestGeneratingSuccessor();
+void TestTimer();
 
 constexpr puzzle_state correct_state =
 {

@@ -22,7 +22,20 @@ puzzle_state UniformCostSearch(puzzle_state& start_state)
 
 
 
-
   // CHANGE THIS NODE WHEN FINISHED
   return start_state;
 }
+
+// Node* GeneralSearch(Node* initial_node)
+// {
+//   int max_queue_size = 0;
+//   int nodes_popped = 0;
+
+//   puzzle_container::min_heap.push(initial_node);
+
+//   // while ( puzzle_container::min_heap.size() )
+
+
+
+//   return Node*();
+// }

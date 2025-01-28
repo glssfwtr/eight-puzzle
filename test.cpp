@@ -83,7 +83,44 @@ void NodePointerReferenceSetTest()
   return;
 }
 
-void PriorityQeueueTest()
+void PriorityQueueSizeTest()
+{
+  puzzle_state loader = problem_state1;
+  std::cout << puzzle_container::min_heap.size() << "\n";
+  Node* node0 = new Node(nullptr, 5, loader);
+  puzzle_container::min_heap.push(node0);
+  std::cout << puzzle_container::min_heap.size() << "\n";
+
+  loader = problem_state2;
+  Node* node1 = new Node(nullptr , 3, loader);
+  puzzle_container::min_heap.push(node1);
+  std::cout << puzzle_container::min_heap.size() << "\n";
+
+  loader = problem_state3;
+  Node* node2 = new Node(nullptr , 7, loader);
+  puzzle_container::min_heap.push(node2);
+  std::cout << puzzle_container::min_heap.size() << "\n";
+
+  Node* popped = puzzle_container::min_heap.top();
+  PrintPuzzleState(popped->current_puzzle_state);
+  puzzle_container::min_heap.pop();
+  std::cout << puzzle_container::min_heap.size() << "\n";
+
+  popped = puzzle_container::min_heap.top();
+  PrintPuzzleState(popped->current_puzzle_state);
+  puzzle_container::min_heap.pop();
+  std::cout << puzzle_container::min_heap.size() << "\n";
+
+  popped = puzzle_container::min_heap.top();
+  PrintPuzzleState(popped->current_puzzle_state);
+  puzzle_container::min_heap.pop();
+  std::cout << puzzle_container::min_heap.size() << "\n";
+
+
+  return;
+}
+
+void PriorityQueueTest()
 {
   puzzle_state problem_state = problem_state1; // load to avoid constexpr issues
 
@@ -91,7 +128,7 @@ void PriorityQeueueTest()
 
   PrintPuzzleState(node0->current_puzzle_state);
 
-  std::vector<Node*> successor_nodes = generate_successors(node0);
+  std::vector<Node*> successor_nodes = GenerateSuccessors(node0);
 
   puzzle_container::min_heap.push(node0);
   for ( Node* node : successor_nodes )
@@ -99,7 +136,7 @@ void PriorityQeueueTest()
     puzzle_container::min_heap.push(node);
   }
 
-  successor_nodes = generate_successors(successor_nodes.back());
+  successor_nodes = GenerateSuccessors(successor_nodes.back());
 
   for ( Node* node : successor_nodes )
   {
@@ -186,6 +223,35 @@ void TestDictionary()
   std::cout << "\n======================\n";
 
   return;
+}
+
+void TestGeneratingSuccessor()
+{
+  puzzle_state loader = problem_state1;
+
+  Node* problem_node = new Node(loader);
+
+  std::vector<Node*> successor_nodes = GenerateSuccessors(problem_node);
+
+  PrintPuzzleState(problem_node->current_puzzle_state);
+
+  for ( const Node* nodes : successor_nodes )
+  {
+    PrintPuzzleState(nodes->current_puzzle_state);
+  }
+
+  loader = problem_state3;
+
+  Node* some_node = new Node(loader);
+
+  successor_nodes = GenerateSuccessors(some_node);
+
+
+  for ( const Node* nodes : successor_nodes )
+  {
+    PrintPuzzleState(nodes->current_puzzle_state);
+  }
+
 }
 
 void TestTimer()

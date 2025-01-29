@@ -85,7 +85,7 @@ struct NodeDepthComparator
 {
   bool operator()(const Node* lhs, const Node* rhs) const
   {
-    return (lhs->node_depth + lhs->heuristic_value) > (rhs->node_depth + rhs->heuristic_value); // Min-heap (smaller cost has higher priority)
+    return (lhs->f) > (rhs->f); // Min-heap (smaller cost has higher priority)
   }
 };
 
@@ -96,6 +96,9 @@ namespace puzzle_container
   extern states_dictionary visited_states;
   extern std::priority_queue<Node*, std::vector<Node*>, NodeDepthComparator> min_heap;
 }
+
+extern std::size_t max_queue_size;
+extern std::size_t nodes_popped;
 
 std::vector<Node*> GenerateSuccessors(Node* parent_node);
 

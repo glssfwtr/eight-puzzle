@@ -168,22 +168,24 @@ void PriorityQueueTest()
 
 void TestDictionary()
 {
+  std::cout << "Starting TestDictionary\n";
+
   puzzle_state loader = problem_state1;
   Node* node0 = new Node(loader);
   PrintPuzzleState(node0->current_puzzle_state);
-  std::cout << InsertState(node0->current_puzzle_state) << "\n";
+  std::cout << "InsertState(node0): " << InsertState(node0->current_puzzle_state) << "\n";
 
   loader = problem_state2;
   Node* node1 = new Node(loader);
   PrintPuzzleState(node1->current_puzzle_state);
-  std::cout << InsertState(node1->current_puzzle_state) << "\n";
+  std::cout << "InsertState(node1): " << InsertState(node1->current_puzzle_state) << "\n";
 
   loader = problem_state3;
   Node* node2 = new Node(loader);
   PrintPuzzleState(node2->current_puzzle_state);
-  std::cout << InsertState(node2->current_puzzle_state) << "\n";
+  std::cout << "InsertState(node2): " << InsertState(node2->current_puzzle_state) << "\n";
 
-  if ( InsertState(node0->current_puzzle_state) )
+  if (InsertState(node0->current_puzzle_state))
   {
     std::cout << "node0 inserted\n";
   }
@@ -192,7 +194,7 @@ void TestDictionary()
     std::cout << "node0 not inserted\n";
   }
 
-  if ( InsertState(node1->current_puzzle_state) )
+  if (InsertState(node1->current_puzzle_state))
   {
     std::cout << "node1 inserted\n";
   }
@@ -201,7 +203,7 @@ void TestDictionary()
     std::cout << "node1 not inserted\n";
   }
 
-  if ( InsertState(node2->current_puzzle_state) )
+  if (InsertState(node2->current_puzzle_state))
   {
     std::cout << "node2 inserted\n";
   }
@@ -210,18 +212,16 @@ void TestDictionary()
     std::cout << "node2 not inserted\n";
   }
 
+  std::cout << "Visited states size: " << puzzle_container::visited_states.size() << "\n";
 
-  std::cout << puzzle_container::visited_states.size() << "\n";
-
-  for (states_dictionary::iterator::value_type state : puzzle_container::visited_states)
+  for (const auto& state : puzzle_container::visited_states)
   {
     PrintPuzzleState(state);
   }
 
-
-
   std::cout << "\n======================\n";
 
+  std::cout << "Finished TestDictionary\n";
   return;
 }
 

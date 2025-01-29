@@ -7,6 +7,10 @@ namespace puzzle_container
   std::priority_queue<Node*, std::vector<Node*>, NodeDepthComparator> min_heap;
 }
 
+std::size_t max_queue_size;
+std::size_t nodes_popped;
+
+
 std::vector<Node *> GenerateSuccessors(Node *parent_node)
 {
   static const std::array<std::pair<int, int>, 4> blank_movement =

@@ -87,17 +87,17 @@ void PriorityQueueSizeTest()
 {
   puzzle_state loader = problem_state1;
   std::cout << puzzle_container::min_heap.size() << "\n";
-  Node* node0 = new Node(nullptr, 5, loader);
+  Node* node0 = new Node(nullptr, 5, 0, loader);
   puzzle_container::min_heap.push(node0);
   std::cout << puzzle_container::min_heap.size() << "\n";
 
   loader = problem_state2;
-  Node* node1 = new Node(nullptr , 3, loader);
+  Node* node1 = new Node(nullptr, 3, 0, loader);
   puzzle_container::min_heap.push(node1);
   std::cout << puzzle_container::min_heap.size() << "\n";
 
   loader = problem_state3;
-  Node* node2 = new Node(nullptr , 7, loader);
+  Node* node2 = new Node(nullptr, 7, 0, loader);
   puzzle_container::min_heap.push(node2);
   std::cout << puzzle_container::min_heap.size() << "\n";
 
@@ -143,7 +143,7 @@ void PriorityQueueTest()
     puzzle_container::min_heap.push(node);
   }
 
-  Node* node1 = new Node(nullptr, -999, problem_state);
+  Node* node1 = new Node(nullptr, -999, 0, problem_state);
 
   puzzle_container::min_heap.push(node1);
 

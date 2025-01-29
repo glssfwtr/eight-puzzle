@@ -21,8 +21,8 @@ std::vector<Node *> GenerateSuccessors(Node *parent_node)
 
   std::vector<Node *> successor_nodes;
 
-  int zero_row;
-  int zero_column;
+  int zero_row = 0;
+  int zero_column = 0;
 
   const puzzle_state& parent_state = parent_node->current_puzzle_state;
 
@@ -55,7 +55,7 @@ std::vector<Node *> GenerateSuccessors(Node *parent_node)
       // swap blank tile with tile that was in the direction of movement
       std::swap(successor_state[static_cast<std::size_t>(zero_row)][static_cast<std::size_t>(zero_column)], successor_state[static_cast<std::size_t>(new_zero_row)][static_cast<std::size_t>(new_zero_column)]);
 
-      Node* successor_node = new Node(parent_node, parent_node->node_depth + 1, successor_state);
+      Node* successor_node = new Node(parent_node, parent_node->node_depth + 1, 0, successor_state);
       successor_nodes.push_back(successor_node);
     }
   }

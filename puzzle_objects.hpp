@@ -44,7 +44,7 @@ struct Node
   puzzle_state current_puzzle_state; //
 
   Node(puzzle_state& state) : current_puzzle_state(state) {}
-  Node(Node* p = nullptr, int d = 0, puzzle_state& state = bad_state) : parent(p), node_depth(d), current_puzzle_state(state) {}
+  Node(Node* p = nullptr, int d = 0, int h = 0 ,puzzle_state& state = bad_state) : parent(p), node_depth(d), heuristic_value(h) , current_puzzle_state(state) {}
   ~Node() = default;
 };
 
@@ -80,11 +80,12 @@ struct PuzzleStateEqual
 
 
 // priority queue comparator because std::priority_queue is a max heap by default
+// queue each node based on "best" f(n) = g(n) depth + h(n) heuristic function
 struct NodeDepthComparator
 {
   bool operator()(const Node* lhs, const Node* rhs) const
   {
-    return lhs->node_depth > rhs->node_depth; // Min-heap (smaller cost has higher priority)
+    return (lhs->node_depth + lhs->heuristic_value) > (rhs->node_depth + rhs->heuristic_value); // Min-heap (smaller cost has higher priority)
   }
 };
 

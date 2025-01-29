@@ -1,10 +1,5 @@
 #include "solver.hpp"
 
-bool CheckGoalState(const puzzle_state& state)
-{
-  return ( state == goal_state );
-}
-
 int EvalUniformCostSearch(Node* node)
 {
   return node->node_depth;
@@ -58,7 +53,7 @@ Node* GeneralSearch(Node* initial_node, EvaluationFunction eval)
     puzzle_container::min_heap.pop();
     ++nodes_popped;
 
-    if ( CheckGoalState(top_node->current_puzzle_state) )
+    if ( top_node->current_puzzle_state == goal_state )
     {
       return top_node;
     }

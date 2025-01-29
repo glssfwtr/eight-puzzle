@@ -17,8 +17,6 @@ int EvalAStarMisplacedTiles(Node* node);
 int HeuristicManhattanDistance(const puzzle_state& state);
 int EvalAStarManhattanDistance(Node* node);
 
-
-bool CheckGoalState(const puzzle_state& state);
 Node* GeneralSearch(Node* initial_node, EvaluationFunction eval);
 
 #endif // SOLVER_HPP

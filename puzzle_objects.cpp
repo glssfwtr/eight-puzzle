@@ -51,6 +51,7 @@ std::vector<Node *> GenerateSuccessors(Node *parent_node)
     int new_zero_row = zero_row + movement.first;
     int new_zero_column = zero_column + movement.second;
 
+    // boundary checking every move
     if ( new_zero_row >= 0 && new_zero_row < rows && new_zero_column >= 0 && new_zero_column < columns )
     {
       // new state starting off as parent state

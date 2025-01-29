@@ -9,6 +9,20 @@ int HeuristicMisplacedTiles(const puzzle_state& state)
 {
   int total_misplaced_tiles = 0;
 
+  for ( int i = 0; i < rows; ++i )
+  {
+    for ( int j = 0; j < columns; ++j )
+    {
+      // compare current state tile to goal state tile, if not matching ++misplaced
+      // skip if current tile is blank
+      if ( (state[i][j] != 0) && state[i][j] != goal_state[i][j] )
+      {
+        ++total_misplaced_tiles;
+      }
+
+    }
+  }
+
   return total_misplaced_tiles;
 }
 
@@ -21,6 +35,7 @@ int EvalAStarMisplacedTiles(Node *node)
 int HeuristicManhattanDistance(const puzzle_state& state)
 {
   int total_distance = 0;
+
 
 
   return total_distance;

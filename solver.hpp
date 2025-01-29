@@ -11,10 +11,10 @@ using EvaluationFunction = int(*)(Node*); // define function pointer shorthand
 */
 int EvalUniformCostSearch(Node* node);
 
-int HeuristicMisplacedTiles(const puzzle_state& state);
+int HeuristicMisplacedTiles(const puzzle_state& state); // DON'T COUNT BLANK TILE STUPID
 int EvalAStarMisplacedTiles(Node* node);
 
-int HeuristicManhattanDistance(const puzzle_state& state);
+int HeuristicManhattanDistance(const puzzle_state& state); // DON'T COUNT BLANK TILE STUPID
 int EvalAStarManhattanDistance(Node* node);
 
 Node* GeneralSearch(Node* initial_node, EvaluationFunction eval);

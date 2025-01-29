@@ -1,16 +1,5 @@
 #include "solver.hpp"
 
-// possible redundant as InsertState already checks for this by default on insert
-bool CheckRepeated(const puzzle_state& state)
-{
-  return ( puzzle_container::visited_states.find(state) != puzzle_container::visited_states.end() );
-}
-
-bool InsertState(const puzzle_state& state)
-{
-  return puzzle_container::visited_states.insert(state).second; // insert returns a pair, second is bool indicating success
-}
-
 bool CheckGoalState(const puzzle_state& state)
 {
   return ( state == goal_state );
@@ -19,6 +8,33 @@ bool CheckGoalState(const puzzle_state& state)
 int EvalUniformCostSearch(Node* node)
 {
   return node->node_depth;
+}
+
+int HeuristicMisplacedTiles(const puzzle_state& state)
+{
+  int total_misplaced_tiles = 0;
+
+  return total_misplaced_tiles;
+}
+
+int EvalAStarMisplacedTiles(Node *node)
+{
+  node->heuristic_value = HeuristicMisplacedTiles(node->current_puzzle_state);
+  return node->node_depth + node->heuristic_value;
+}
+
+int HeuristicManhattanDistance(const puzzle_state& state)
+{
+  int total_distance = 0;
+
+
+  return total_distance;
+}
+
+int EvalAStarManhattanDistance(Node *node)
+{
+  node->heuristic_value = HeuristicManhattanDistance(node->current_puzzle_state);
+  return node->node_depth + node->heuristic_value;
 }
 
 Node* GeneralSearch(Node* initial_node, EvaluationFunction eval)

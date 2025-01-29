@@ -5,11 +5,11 @@
 #include "print.hpp"
 #include "solver.hpp"
 
-void InitializerTests();
+// void InitializerTests();
 void NodePointerReferenceSetTest();
 void PriorityQueueSizeTest();
 void PriorityQueueTest();
-void TestDictionary();
+// void TestDictionary();
 void TestGeneratingSuccessor();
 void TestTimer();
 
@@ -67,6 +67,10 @@ constexpr puzzle_state problem_state5 = // failing parity
   }
 };
 
+/*
+      Taken from Professor's sample report
+*/
+
 constexpr puzzle_state trivial =
 {
   {
@@ -76,10 +80,6 @@ constexpr puzzle_state trivial =
   }
 };
 
-
-/*
-      Taken from Professor's sample report
-*/
 constexpr puzzle_state very_easy =
 {
   {

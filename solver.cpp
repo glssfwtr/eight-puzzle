@@ -9,9 +9,9 @@ int HeuristicMisplacedTiles(const puzzle_state& state)
 {
   int total_misplaced_tiles = 0;
 
-  for ( int i = 0; i < rows; ++i )
+  for ( std::size_t i = 0; i < rows; ++i )
   {
-    for ( int j = 0; j < columns; ++j )
+    for ( std::size_t j = 0; j < columns; ++j )
     {
       // compare current state tile to goal state tile, if not matching ++misplaced
       // skip if current tile is blank

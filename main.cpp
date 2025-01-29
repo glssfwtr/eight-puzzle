@@ -10,16 +10,16 @@ void ParsePuzzleStateArg(const std::string& arg_puzzle_string, puzzle_state& sta
 {
   if (arg_puzzle_string.length() != (rows * columns))
   {
-    std::cout << "Invalid puzzle length, must be 9 digits.\n";
+    std::cout << "Invalid puzzle length, must be "<< (rows * columns) << " digits.\n";
 
     return;
   }
 
-  int current_string_index = 0;
+  std::size_t current_string_index = 0;
 
-  for ( int i = 0; i < rows; ++i )
+  for ( std::size_t i = 0; i < rows; ++i )
   {
-    for ( int j = 0; j < columns; ++j )
+    for ( std::size_t j = 0; j < columns; ++j )
     {
       if ( !isdigit(arg_puzzle_string[current_string_index]) )
       {

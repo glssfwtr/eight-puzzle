@@ -17,6 +17,21 @@ void PrintPuzzleState(const puzzle_state& state)
   return;
 }
 
+void PrintNodeParentTrace(const Node *node)
+{
+  const Node* node_iter = node;
+
+  while (node_iter != nullptr)
+  {
+    std::cout << "g = " << node_iter->node_depth << ", h = " << node_iter->heuristic_value << ", f = " << node_iter->f << "\n";
+    PrintPuzzleState(node_iter->current_puzzle_state);
+
+    node_iter = node_iter->parent;
+  }
+
+  return;
+}
+
 // horrendous formatting
 void PrintComparison(const puzzle_state& lhs, const puzzle_state& rhs)
 {

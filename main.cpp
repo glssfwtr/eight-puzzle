@@ -6,19 +6,21 @@
 
 int main()
 {
-  // InitializerTests();
-  // NodePointerReferenceSetTest();
-  // PriorityQueueTest();
-  // PriorityQueueSizeTest();
-  // TestDictionary();
-  // TestGeneratingSuccessor();
-  puzzle_state puzzle_loader = problem_state1;
+  puzzle_state puzzle_loader = problem_state3;
   Node* problem_node = new Node(nullptr, 0, 0, puzzle_loader);
 
   Node* solution = GeneralSearch(problem_node, EvalUniformCostSearch);
 
-  PrintPuzzleState(solution->current_puzzle_state);
+  if (solution != nullptr)
+  {
+    std::cout << "Solution found: d = " << solution->node_depth << " f = " << solution->f << "\n";;
 
+    PrintNodeParentTrace(solution);
+  }
+  else
+  {
+    std::cout << "No solution found\n";
+  }
 
 
   return 0;

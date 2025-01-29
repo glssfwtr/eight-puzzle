@@ -29,8 +29,6 @@ Node* GeneralSearch(Node* initial_node, EvaluationFunction eval)
 
   puzzle_container::min_heap.push(initial_node);
 
-  std::cout << "here";
-
   while ( !puzzle_container::min_heap.empty() )
   {
     top_node = puzzle_container::min_heap.top(); // load the node before popping

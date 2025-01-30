@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "puzzle_objects.hpp"
+#include "solver.hpp"
 
 void PrintComparison(const puzzle_state& lhs, const puzzle_state& rhs);
 void PrintPuzzleState(const puzzle_state& state);

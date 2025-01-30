@@ -72,6 +72,9 @@ Node* GeneralSearch(Node* initial_node, EvaluationFunction eval)
   max_queue_size = 0;
   nodes_popped = 0;
 
+  initial_node->f = eval(initial_node);
+  initial_node->heuristic_value = abs(initial_node->f - initial_node->node_depth);
+
   puzzle_container::min_heap.push(initial_node);
 
   while ( !puzzle_container::min_heap.empty() )

@@ -3,8 +3,9 @@
 
 #include <array>
 #include <queue>
-#include <unordered_set>
 #include <tuple>
+#include <unordered_map>
+#include <unordered_set>
 
 /*
           PUZZLE STATE REPRESENTATION
@@ -16,7 +17,6 @@ constexpr int columns = 3; // int in each std::array
 using puzzle_state = std::array<std::array<int, columns>, rows>; // remember off by 1 indexing, 0 is the first, 2 is the last
 // no constructors implemented, so take random shit from stack mem
 
-
 constexpr puzzle_state goal_state =
 {
   {
@@ -25,6 +25,9 @@ constexpr puzzle_state goal_state =
     {7, 8, 0}
   }
 };
+
+// is there a better way to know besides caching it????
+extern std::unordered_map<int, std::pair<int, int>> goal_position_pairs;
 
 static puzzle_state bad_state =
 {

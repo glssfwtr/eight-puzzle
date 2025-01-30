@@ -13,7 +13,7 @@ int HeuristicMisplacedTiles(const puzzle_state& state)
   {
     for ( std::size_t j = 0; j < columns; ++j )
     {
-      // compare current state tile to goal state tile, if not matching ++misplaced
+      // compare current state tile to goal state tile, if not matching, ++misplaced
       // skip if current tile is blank
       if ( (state[i][j] != 0) && state[i][j] != goal_state[i][j] )
       {
@@ -35,8 +35,27 @@ int EvalAStarMisplacedTiles(Node *node)
 int HeuristicManhattanDistance(const puzzle_state& state)
 {
   int total_distance = 0;
+  int goal_row = 0;
+  int goal_column = 0;
 
+  for ( int i = 0; i < rows; ++i )
+  {
+    for ( int j = 0; j < columns; ++j ) // HOLY SHT
+    {
 
+      int problem_value = state[static_cast<std::size_t>(i)][static_cast<std::size_t>(j)];
+
+      if ( problem_value == 0 )
+      {
+        continue; // next loop
+      }
+
+      goal_row = goal_position_pairs[problem_value].first;
+      goal_column = goal_position_pairs[problem_value].second;
+
+      total_distance += abs(i - goal_row) + abs(j - goal_column); // how far away is (where found) to (where need to be)
+    }
+  }
 
   return total_distance;
 }

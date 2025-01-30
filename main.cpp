@@ -8,7 +8,7 @@
 
 void ParsePuzzleStateArg(const std::string& arg_puzzle_string, puzzle_state& state)
 {
-  if (arg_puzzle_string.length() != (rows * columns))
+  if ( arg_puzzle_string.length() != (rows * columns) )
   {
     std::cout << "Invalid puzzle length, must be "<< (rows * columns) << " digits.\n";
 
@@ -39,7 +39,7 @@ void ParsePuzzleStateArg(const std::string& arg_puzzle_string, puzzle_state& sta
 
 int main(int argc, char* argv[])
 {
-  if (argc != 3)
+  if ( argc != 3 )
   {
     std::cout << "Usage: " << argv[0] << " <9-digit puzzle state> <search option (1-3)>\n";
     return -1;
@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
 
   int option = std::stoi(argv[2]);
 
-  if (option < 1 || option > 3)
+  if ( option < 1 || option > 3 )
   {
     std::cout << "Invalid search option. Must be 1 (UCS), 2 (A* Misplaced Tiles), or 3 (A* Manhattan Distance).\n";
     return 1;
@@ -65,14 +65,20 @@ int main(int argc, char* argv[])
 
   if ( option == 1 ) // UCS
   {
+    std::cout << "UCS\n";
+
     solution = GeneralSearch(problem_node, EvalUniformCostSearch);
   }
   else if ( option == 2 ) // A* Misplaced Tiles Heuristic
   {
+    std::cout << "MISPLACED\n";
+
     solution = GeneralSearch(problem_node, EvalAStarMisplacedTiles);
   }
   else if ( option == 3 ) // A* Manhattan Distance Heuristic
   {
+    std::cout << "MANHATTAN\n";
+
     solution = GeneralSearch(problem_node, EvalAStarManhattanDistance);
   }
 

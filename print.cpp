@@ -44,7 +44,7 @@ void PrintComparison(const puzzle_state& lhs, const puzzle_state& rhs)
 
     if ( i == lhs.size() / 2 ) // check if printing middle row
     {
-      if (lhs == rhs)
+      if ( lhs == rhs )
       {
         std::cout << "== ";
       }

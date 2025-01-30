@@ -116,6 +116,15 @@ constexpr puzzle_state oh_boy =
   }
 };
 
+constexpr puzzle_state getting_toasty =
+{
+  {
+    {8, 1, 7},
+    {2, 6, 3},
+    {5, 4, 0},
+  }
+};
+
 
 
 #endif // TEST_HPP

@@ -63,23 +63,25 @@ int main(int argc, char* argv[])
   Node* problem_node = new Node(nullptr, 0, 0, puzzle_loader);
   Node* solution = nullptr;
 
-  if ( option == 1 ) // UCS
+  switch (option)
   {
+  case 1:
     std::cout << "UCS\n";
-
     solution = GeneralSearch(problem_node, EvalUniformCostSearch);
-  }
-  else if ( option == 2 ) // A* Misplaced Tiles Heuristic
-  {
+    break;
+
+  case 2:
     std::cout << "MISPLACED\n";
-
     solution = GeneralSearch(problem_node, EvalAStarMisplacedTiles);
-  }
-  else if ( option == 3 ) // A* Manhattan Distance Heuristic
-  {
-    std::cout << "MANHATTAN\n";
+    break;
 
+  case 3:
+    std::cout << "MANHATTAN\n";
     solution = GeneralSearch(problem_node, EvalAStarManhattanDistance);
+    break;
+
+  default:
+    break;
   }
 
   if ( solution != nullptr )
@@ -89,7 +91,7 @@ int main(int argc, char* argv[])
   }
   else
   {
-    std::cout << "No solution found\n";
+    std::cout << "No solution found :(\n";
   }
 
   return 0;

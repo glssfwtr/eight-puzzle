@@ -4,7 +4,7 @@
 #include "puzzle_objects.hpp"
 #include "print.hpp"
 
-using EvaluationFunction = int(*)(Node*); // define function pointer shorthand
+using EvaluationFunction = int(*)(Node*); // define function pointer signature shorthand
 
 /*
     evaluation functions for queueing based on priority on f(n)

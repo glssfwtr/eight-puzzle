@@ -18,10 +18,10 @@ Example execution:
 
 The above will result in a puzzle with the following properties:
 
-{8, 1, 7},
+[8 1 7]
 
-{2, 6, 3},
+[2 6 3]
 
-{5, 4, 0},
+[5 4 0]
 
 and solved using A* with Misplaced Tile Heuristics.

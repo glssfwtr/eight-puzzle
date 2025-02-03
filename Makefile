@@ -21,10 +21,10 @@ OBJECTS = $(patsubst %.cpp, build/%.o, $(SOURCES))
 EXECUTABLE = a.out
 
 all: clean $(EXECUTABLE)
-			@./$(EXECUTABLE)
+# @./$(EXECUTABLE)
 
-# $(EXECUTABLE): $(OBJECTS)
-# 	@$(CXX) $(CXXFLAGS) $(INCLUDES) -o $(EXECUTABLE) $(OBJECTS)
+$(EXECUTABLE): $(OBJECTS)
+	@$(CXX) $(CXXFLAGS) $(INCLUDES) -o $(EXECUTABLE) $(OBJECTS)
 
 build/%.o: %.cpp
 	@mkdir -p build

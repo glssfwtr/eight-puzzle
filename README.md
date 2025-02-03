@@ -1,4 +1,4 @@
-Complete Installation and Usage Instructions
+# Complete Installation and Usage Instructions
 
 1. clone the github repo
 
